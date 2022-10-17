@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/Login">
+
+    <fragment
+        android:id="@+id/Login"
+        android:name="com.app.loanserviceapp.login.Login"
+        android:label="@string/login_fragment_label"
+        tools:layout="@layout/login_fragment">
+        <action
+            android:id="@+id/action_Login_to_Register"
+            app:destination="@id/RegisterFragment" />
+        <action
+            android:id="@+id/action_Login_to_PasswordPinFragment"
+            app:destination="@id/PasswordPinFragment" />
+        <action
+            android:id="@+id/action_Login_to_DashboardFragment"
+            app:destination="@id/DashboardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/RegisterFragment"
+        android:name="com.app.loanserviceapp.register.Register"
+        android:label="@string/register_fragment_label"
+        tools:layout="@layout/register_fragment">
+        <action
+            android:id="@+id/action_RegisterFragment_to_PasswordPinFragment2"
+            app:destination="@id/PasswordPinFragment" />
+        <action
+            android:id="@+id/action_RegisterFragment_to_TermsFragment"
+            app:destination="@id/TermsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/PasswordPinFragment"
+        android:name="com.app.loanserviceapp.password.PasswordPin"
+        android:label="@string/passcode_fragment_label"
+        tools:layout="@layout/password_pin_fragment">
+        <action
+            android:id="@+id/action_PasswordPinFragment_to_RegisterFragment"
+            app:destination="@id/RegisterFragment" />
+        <action
+            android:id="@+id/action_PasswordPinFragment_to_DashboardFragment"
+            app:destination="@id/DashboardFragment" />
+        <argument
+            android:name="username"
+            app:argType="string" />
+        <argument android:name="userphone"
+            app:argType="string" />
+        <argument
+            android:name="useremail"
+            app:argType="string" />
+        <argument
+            android:name="from"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/PersonalFragment"
+        android:name="com.app.loanserviceapp.verification.personal.PersonalFragment"
+        android:label="@string/personal_fragment_label"
+        tools:layout="@layout/personal_fragment">
+        <action
+            android:id="@+id/action_PersonalFragment_to_AboutusFragment"
+            app:destination="@id/nav_aboutus" />
+        <action
+            android:id="@+id/action_PersonalFragment_to_nav_confirmed"
+            app:destination="@id/nav_confirmed" />
+        <action
+            android:id="@+id/action_PersonalFragment_to_LoanApprovalFragment"
+            app:destination="@id/LoanApprovalFragment" />
+        <argument
+            android:name="packageName"
+            app:argType="string" />
+        <argument
+            android:name="packageid"
+            app:argType="string" />
+        <argument
+            android:name="insuranceFees"
+            app:argType="string" />
+        <argument
+            android:name="processingFees"
+            app:argType="string" />
+        <argument
+            android:name="ImageName"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/DocumenFragment"
+        android:name="com.app.loanserviceapp.verification.documentation.DocumenFragment"
+        android:label="@string/personal_fragment_label"
+        tools:layout="@layout/documen_fragment">
+        <action
+            android:id="@+id/action_DocumenFragment_to_PersonalFragment"
+            app:destination="@id/PersonalFragment" />
+        <action
+            android:id="@+id/action_DocumenFragment_to_LoanApprovalFragment"
+            app:destination="@id/LoanApprovalFragment" />
+        <argument
+            android:name="packageId"
+            app:argType="string" />
+        <argument
+            android:name="insuranceFees"
+            app:argType="string" />
+        <argument
+            android:name="processingFees"
+            app:argType="string" />
+        <argument
+            android:name="packageName"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/DashboardFragment"
+        android:name="com.app.loanserviceapp.dashboard.Dashboard"
+        android:label="@string/dashboard_fragment_label"
+        tools:layout="@layout/dashboard_fragment">
+        <action
+            android:id="@+id/action_DashboardFragment_to_ContactFragment"
+            app:destination="@id/nav_contact" />
+        <action
+            android:id="@+id/action_DashboardFragment_to_AboutusFragment"
+            app:destination="@id/nav_aboutus" />
+        <action
+            android:id="@+id/action_DashboardFragment_to_LoanApprovalFragment"
+            app:destination="@id/LoanApprovalFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/LoanApprovalFragment"
+        android:name="com.app.loanserviceapp.loanapackages.LoanApprovalFragment"
+        android:label="@string/dashboard_fragment_label"
+        tools:layout="@layout/loan_approval_fragment">
+        <action
+            android:id="@+id/action_LoanApprovalFragment_to_DocumenFragment"
+            app:destination="@id/DocumenFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/TermsFragment"
+        android:name="com.app.loanserviceapp.terms.TermsFragment"
+        android:label="@string/terms_fragment_label"
+        tools:layout="@layout/terms_fragment"/>
+
+    <fragment
+        android:id="@+id/nav_contact"
+        android:name="com.app.loanserviceapp.contact.ContactFragment"
+        android:label="@string/contact_fragment_label"
+        tools:layout="@layout/contact_fragment"/>
+    <fragment
+        android:id="@+id/nav_aboutus"
+        android:name="com.app.loanserviceapp.aboutus.AboutusFragment"
+        android:label="@string/aboutus_fragment_label"
+        tools:layout="@layout/aboutus_fragment"/>
+
+    <fragment
+        android:id="@+id/nav_confirmed"
+        android:name="com.app.loanserviceapp.confirmed.ConfirmedFragment"
+        android:label="@string/confirmed_fragment_label"
+        tools:layout="@layout/confirmed_fragment">
+        <action
+            android:id="@+id/action_nav_confirmed_to_DashboardFragment"
+            app:destination="@id/DashboardFragment" />
+    </fragment>
+
+
+</navigation>

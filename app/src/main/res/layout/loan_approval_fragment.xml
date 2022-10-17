@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".login.Login">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="@dimen/_13sdp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="@dimen/_13sdp"
+        android:layout_marginBottom="@dimen/_13sdp"
+        android:background="@drawable/rounded_corner_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:text="Loan approved and\n processing fees"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:textSize="@dimen/_15sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+<androidx.core.widget.NestedScrollView
+    android:layout_width="match_parent"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    android:layout_marginBottom="@dimen/_5sdp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/textView"
+    android:layout_height="0dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/layoutBox1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_100sdp">
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true">
+
+                <RelativeLayout
+                    android:layout_width="@dimen/_240sdp"
+                    android:layout_height="@dimen/_100sdp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:background="@drawable/loan_amont">
+
+                    <Spinner
+                        android:id="@+id/spnPackages"
+                        android:layout_width="@dimen/_170sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:background="@drawable/rounded_border_edittext_black"
+                        android:hint="Loan Amount"
+                        android:paddingStart="@dimen/_15sdp"
+                        android:singleLine="true" />
+                </RelativeLayout>
+            </FrameLayout>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/layoutBox2"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_height="@dimen/_100sdp">
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true">
+
+
+                <RelativeLayout
+                    android:layout_width="@dimen/_240sdp"
+                    android:layout_height="@dimen/_100sdp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:background="@drawable/insurance_fees">
+
+                    <EditText
+                        android:id="@+id/etInsurance"
+                        android:layout_width="@dimen/_170sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center_vertical"
+                        android:editable="false"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:background="@drawable/rounded_border_edittext_black"
+                        android:hint="Insurance Fees"
+                        android:paddingStart="@dimen/_15sdp"
+                        android:singleLine="true" />
+                </RelativeLayout>
+
+            </FrameLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layoutBox3"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_100sdp">
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true">
+
+
+                <RelativeLayout
+                    android:layout_width="@dimen/_240sdp"
+                    android:layout_height="@dimen/_100sdp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:background="@drawable/insurance_fees">
+
+                    <EditText
+                        android:id="@+id/etProcessingFees"
+                        android:layout_width="@dimen/_170sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:background="@drawable/rounded_border_edittext_black"
+                        android:hint="Processing Fees"
+                        android:editable="false"
+                        android:paddingStart="@dimen/_15sdp"
+                        android:singleLine="true" />
+
+                </RelativeLayout>
+
+            </FrameLayout>
+
+
+
+        </RelativeLayout>
+        <ImageView
+            android:id="@+id/btnLoanApplyLoan"
+            android:layout_width="@dimen/_230sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/next_btn"
+             />
+
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

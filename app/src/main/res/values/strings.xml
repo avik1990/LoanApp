@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Loan Services</string>
+    <string name="title_activity_main">MainActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="login_fragment_label">Login</string>
+    <string name="register_fragment_label">Register</string>
+    <string name="passcode_fragment_label">Passcode</string>
+    <string name="personal_fragment_label">Personal</string>
+    <string name="dashboard_fragment_label">Dashboard</string>
+    <string name="terms_fragment_label">Terms</string>
+    <string name="contact_fragment_label">Contact</string>
+    <string name="aboutus_fragment_label">Aboutus</string>
+    <string name="confirmed_fragment_label">Confirmed</string>
+
+
+    <string name="get_instant_loan_in_3_mins">Get Instant Loan in 3 Mins</string>
+    <string name="login">Login</string>
+    <string name="custom_image_picker_take_photo">Camera</string>
+    <string name="custom_image_picker_choose_from_gallery">Gallery</string>
+    <!-- Alert Manager-->
+    <string name="alert_manager_alert_title">Alert</string>
+    <string name="alert_manager_positive_button">OK</string>
+    <string name="alert_manager_negative_button">CANCEL</string>
+    <string name="one_click_for_all_your_credit_needs">One-Click for all your credit needs</string>
+</resources>

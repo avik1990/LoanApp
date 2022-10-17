@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <string name="custom_image_picker_take_photo">Camera</string>
+    <string name="custom_image_picker_choose_from_gallery">Gallery</string>
+    <!-- Alert Manager-->
+    <string name="alert_manager_alert_title">Alert</string>
+    <string name="alert_manager_positive_button">OK</string>
+    <string name="alert_manager_negative_button">CANCEL</string>
+    <string name="one_click_for_all_your_credit_needs">One-Click for all your credit needs</string>
+</resources>
