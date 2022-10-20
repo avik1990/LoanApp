@@ -2,6 +2,7 @@ package com.app.loanserviceapp.datasource
 
 import com.app.loanserviceapp.dashboard.model.LoanApplicationSattus
 import com.app.loanserviceapp.loanapackages.model.LoanPckages
+import com.app.loanserviceapp.model.PageDetails
 import com.app.loanserviceapp.password.model.LoginResponse
 import com.app.loanserviceapp.register.model.RegisterResponse
 import com.app.loanserviceapp.utils.Constants
@@ -46,6 +47,9 @@ interface LoanApiServices {
     @Multipart
     @POST("uploadFileInServer")
     suspend fun uploadImage(@Part filePart: MultipartBody.Part): Response<UploadFileResponse>
+
+    @GET(Constants.PAGE_CONTENT)
+    suspend fun getPageContent(@Query("PagesIdentifier") pageContent: String): Response<PageDetails>
 
     @FormUrlEncoded
     @POST(Constants.SUBMIT_APPLICATION)

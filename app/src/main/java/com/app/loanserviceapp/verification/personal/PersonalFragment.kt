@@ -13,9 +13,13 @@ import androidx.navigation.fragment.findNavController
 import com.app.loanserviceapp.R
 import com.app.loanserviceapp.databinding.PersonalFragmentBinding
 import com.app.loanserviceapp.register.RegisterDirections
+import com.app.loanserviceapp.utils.Constants
+import com.app.loanserviceapp.utils.Datastore.readString
 import com.app.loanserviceapp.utils.NetworkResult
 import com.app.loanserviceapp.verification.documentation.DocumenFragmentArgs
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.runBlocking
 
 @AndroidEntryPoint
 class PersonalFragment : Fragment() {
@@ -41,6 +45,7 @@ class PersonalFragment : Fragment() {
     var currentAddress=""
     var permanenntAddress=""
     var emailAddress=""
+    var userId:String=""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -53,6 +58,12 @@ class PersonalFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this)[PersonalViewModel::class.java]
+
+
+        runBlocking {
+            val getUserName = context?.readString(Constants.USER_ID)
+            userId = getUserName?.first().toString()
+        }
 
         progressDialog = ProgressDialog(requireContext())
         progressDialog.setTitle("Uploading")
@@ -69,6 +80,7 @@ class PersonalFragment : Fragment() {
 
     private fun getValidation() {
         _binding.btnpersonalSubmit.setOnClickListener{
+            //findNavController().navigate(R.id.action_PersonalFragment_to_nav_confirmed)
             userName=_binding.editName.text.toString()
             mobileNo=_binding.editMobile.text.toString()
             age=_binding.editage.text.toString()
@@ -122,7 +134,7 @@ class PersonalFragment : Fragment() {
 
             progressDialog.show()
             val list: List<String> = listOf(*imageName.split(",").toTypedArray())
-            viewModel.getSubmittedApplication("1",packageId,packagename,insuranceFees,processingFees,
+            viewModel.getSubmittedApplication(userId,packageId,packagename,insuranceFees,processingFees,
                 userName,mobileNo,age,currentAddress,permanenntAddress,emailAddress,list[0],list[1],list[2],list[3])
             fetchData()
         }

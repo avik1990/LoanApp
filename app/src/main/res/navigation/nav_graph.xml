@@ -2,8 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph"
-    app:startDestination="@id/Login">
+    android:id="@+id/nav_graph">
 
     <fragment
         android:id="@+id/Login"
@@ -12,12 +11,18 @@
         tools:layout="@layout/login_fragment">
         <action
             android:id="@+id/action_Login_to_Register"
-            app:destination="@id/RegisterFragment" />
+            app:destination="@id/RegisterFragment"
+            app:popUpTo="@+id/RegisterFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_Login_to_PasswordPinFragment"
+            app:popUpTo="@+id/PasswordPinFragment"
+            app:popUpToInclusive="true"
             app:destination="@id/PasswordPinFragment" />
         <action
             android:id="@+id/action_Login_to_DashboardFragment"
+            app:popUpTo="@+id/DashboardFragment"
+            app:popUpToInclusive="true"
             app:destination="@id/DashboardFragment" />
     </fragment>
     <fragment
@@ -27,9 +32,13 @@
         tools:layout="@layout/register_fragment">
         <action
             android:id="@+id/action_RegisterFragment_to_PasswordPinFragment2"
+            app:popUpTo="@+id/PasswordPinFragment"
+            app:popUpToInclusive="true"
             app:destination="@id/PasswordPinFragment" />
         <action
             android:id="@+id/action_RegisterFragment_to_TermsFragment"
+            app:popUpTo="@+id/TermsFragment"
+            app:popUpToInclusive="true"
             app:destination="@id/TermsFragment" />
     </fragment>
 
@@ -40,14 +49,19 @@
         tools:layout="@layout/password_pin_fragment">
         <action
             android:id="@+id/action_PasswordPinFragment_to_RegisterFragment"
+            app:popUpTo="@+id/RegisterFragment"
+            app:popUpToInclusive="true"
             app:destination="@id/RegisterFragment" />
         <action
             android:id="@+id/action_PasswordPinFragment_to_DashboardFragment"
+            app:popUpTo="@+id/DashboardFragment"
+            app:popUpToInclusive="true"
             app:destination="@id/DashboardFragment" />
         <argument
             android:name="username"
             app:argType="string" />
-        <argument android:name="userphone"
+        <argument
+            android:name="userphone"
             app:argType="string" />
         <argument
             android:name="useremail"
@@ -70,6 +84,8 @@
             app:destination="@id/nav_confirmed" />
         <action
             android:id="@+id/action_PersonalFragment_to_LoanApprovalFragment"
+            app:popUpTo="@+id/LoanApprovalFragment"
+            app:popUpToInclusive="true"
             app:destination="@id/LoanApprovalFragment" />
         <argument
             android:name="packageName"
@@ -86,6 +102,9 @@
         <argument
             android:name="ImageName"
             app:argType="string" />
+        <action
+            android:id="@+id/action_PersonalFragment_to_DashboardFragment"
+            app:destination="@id/DashboardFragment" />
     </fragment>
 
     <fragment
@@ -95,9 +114,13 @@
         tools:layout="@layout/documen_fragment">
         <action
             android:id="@+id/action_DocumenFragment_to_PersonalFragment"
+            app:popUpTo="@+id/PersonalFragment"
+            app:popUpToInclusive="true"
             app:destination="@id/PersonalFragment" />
         <action
             android:id="@+id/action_DocumenFragment_to_LoanApprovalFragment"
+            app:popUpTo="@+id/LoanApprovalFragment"
+            app:popUpToInclusive="true"
             app:destination="@id/LoanApprovalFragment" />
         <argument
             android:name="packageId"
@@ -136,6 +159,8 @@
         tools:layout="@layout/loan_approval_fragment">
         <action
             android:id="@+id/action_LoanApprovalFragment_to_DocumenFragment"
+            app:popUpTo="@+id/DocumenFragment"
+            app:popUpToInclusive="true"
             app:destination="@id/DocumenFragment" />
     </fragment>
 
@@ -143,18 +168,18 @@
         android:id="@+id/TermsFragment"
         android:name="com.app.loanserviceapp.terms.TermsFragment"
         android:label="@string/terms_fragment_label"
-        tools:layout="@layout/terms_fragment"/>
+        tools:layout="@layout/terms_fragment" />
 
     <fragment
         android:id="@+id/nav_contact"
         android:name="com.app.loanserviceapp.contact.ContactFragment"
         android:label="@string/contact_fragment_label"
-        tools:layout="@layout/contact_fragment"/>
+        tools:layout="@layout/contact_fragment" />
     <fragment
         android:id="@+id/nav_aboutus"
         android:name="com.app.loanserviceapp.aboutus.AboutusFragment"
         android:label="@string/aboutus_fragment_label"
-        tools:layout="@layout/aboutus_fragment"/>
+        tools:layout="@layout/aboutus_fragment" />
 
     <fragment
         android:id="@+id/nav_confirmed"
@@ -163,7 +188,12 @@
         tools:layout="@layout/confirmed_fragment">
         <action
             android:id="@+id/action_nav_confirmed_to_DashboardFragment"
-            app:destination="@id/DashboardFragment" />
+            app:destination="@id/DashboardFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/DashboardFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 
 

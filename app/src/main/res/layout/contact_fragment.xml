@@ -6,20 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".terms.TermsFragment">
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="10dp"
         android:layout_marginLeft="@dimen/_13sdp"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="@dimen/_13sdp"
         android:layout_marginBottom="@dimen/_13sdp"
         android:background="@drawable/rounded_corner_bg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/textView"
@@ -49,21 +48,8 @@
                 android:layout_margin="@dimen/_10sdp"
                 android:layout_marginTop="20dp"
                 android:lineSpacingExtra="@dimen/_2sdp"
-                android:text="Contact Name - Goes Here
-                \n\nContact Number- Goes Here
-\n\nEmail- goes here
-\n\nAddress- Goes Here"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_13sdp" />
         </androidx.core.widget.NestedScrollView>
-
-
-
-
-
-
-
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

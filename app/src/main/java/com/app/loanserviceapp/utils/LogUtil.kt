@@ -1,11 +1,11 @@
-package com.diageo.edge.utils
+package com.app.loanserviceapp.utils
 
 import android.util.Log
 
 object LogUtil {
 
     var isDebug = true
-    var tag = "EDGE_PLAY"
+    var tag = "LOAN_SERVICE"
     val maxLogSize = 800
     fun init(isDebug: Boolean) {
         this.isDebug = isDebug

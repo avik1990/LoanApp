@@ -36,12 +36,12 @@ android {
     buildFeatures {
         viewBinding true
     }
+    namespace 'com.app.loanserviceapp'
 }
 
 dependencies {
     def daggerHiltVersion = '2.40.5'
-    def hiltLifeCycleVersion = '1.0.0-alpha03'
-    def coilVersion = '1.2.2'
+    //def coilVersion = '1.2.2'
     def retrofitVersion = "2.9.0"
 
     implementation 'androidx.core:core-ktx:1.8.0'
@@ -68,14 +68,7 @@ dependencies {
     //Hilt for di
     implementation "com.google.dagger:hilt-android:$daggerHiltVersion"
     kapt "com.google.dagger:hilt-android-compiler:$daggerHiltVersion"
-    // Hilt ViewModel extension
-    //implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hiltLifeCycleVersion"
-    //kapt "androidx.hilt:hilt-compiler:$hiltLifeCycleVersion"
-
     //for image rendering
-    implementation "io.coil-kt:coil:$coilVersion"
-    //implementation "androidx.core:core-ktx:+"
-    //implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-
+    //implementation "io.coil-kt:coil:$coilVersion"
 
 }

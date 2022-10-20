@@ -25,8 +25,7 @@ class ConfirmedFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(ConfirmedViewModel::class.java)
-        // TODO: Use the ViewModel
+        viewModel = ViewModelProvider(this)[ConfirmedViewModel::class.java]
     }
 
 }

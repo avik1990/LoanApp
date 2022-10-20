@@ -2,7 +2,7 @@ package com.app.loanserviceapp.utils.fileutil
 
 import android.graphics.Bitmap
 import android.util.Base64
-import com.diageo.edge.utils.LogUtil
+import com.app.loanserviceapp.utils.LogUtil
 import kotlinx.coroutines.*
 import java.io.ByteArrayOutputStream
 import java.io.File

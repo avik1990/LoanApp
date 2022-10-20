@@ -1,10 +1,10 @@
 package com.app.loanserviceapp.utils.imageutils
 
 import android.graphics.Bitmap
+import com.app.loanserviceapp.utils.LogUtil
 import com.app.loanserviceapp.utils.fileutil.FileUtil
 import com.app.loanserviceapp.utils.fileutil.writeBitmap
 import com.app.loanserviceapp.utils.roundOffDecimalCellingTwoDecimal
-import com.diageo.edge.utils.LogUtil
 import com.squareup.picasso.Picasso
 
 import kotlinx.coroutines.*

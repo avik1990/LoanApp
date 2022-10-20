@@ -57,12 +57,16 @@ class Dashboard : Fragment() {
             userId = getUserName?.first().toString()
         }
 
+
+    }
+
+    override fun onResume() {
+        super.onResume()
         progressDialog = ProgressDialog(requireContext())
         progressDialog.setTitle("Downloading")
         progressDialog.setMessage("Please Wait...")
         progressDialog.show()
         viewModel.getLoanStatusList(userId)
-
         fetchData()
     }
 
