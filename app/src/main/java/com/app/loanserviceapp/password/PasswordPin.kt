@@ -106,6 +106,7 @@ class PasswordPin : Fragment() {
                         if(response.data.status==1) {
                             viewModel.saveLoginStatus(true)
                             viewModel.saveUserID(response.data.data.UsersID)
+                            viewModel.saveUserName(response.data.data.FullName)
                             findNavController().navigate(R.id.action_PasswordPinFragment_to_DashboardFragment)
                         } else{
                             Toast.makeText(
@@ -147,6 +148,7 @@ class PasswordPin : Fragment() {
                         if(response.data.status==1) {
                             viewModel.saveLoginStatus(true)
                             viewModel.saveUserID(response.data.data.UsersID)
+                            viewModel.saveUserName(response.data.data.FullName)
                             findNavController().navigate(R.id.action_PasswordPinFragment_to_DashboardFragment)
                         } else{
                             Toast.makeText(

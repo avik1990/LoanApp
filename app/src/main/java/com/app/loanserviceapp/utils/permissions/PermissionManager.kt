@@ -7,7 +7,6 @@ import android.content.Context
 import android.content.pm.PackageManager
 import androidx.core.app.ActivityCompat
 import com.app.loanserviceapp.utils.AlertManagerUtils
-import com.diageo.edge.utils.LogUtil
 
 class PermissionManager {
 

@@ -56,4 +56,7 @@ class RemoteDataSource @Inject constructor(private val dogService: LoanApiServic
             AadharImage,
             PancardImage,
             IncomeProofImage)
+
+    suspend fun getPageContent(pageName: String) =
+        dogService.getPageContent(pageName)
 }

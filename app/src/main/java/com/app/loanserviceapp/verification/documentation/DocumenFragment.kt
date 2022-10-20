@@ -52,10 +52,14 @@ class DocumenFragment : Fragment() {
     val uploadedFilename = arrayListOf<String>()
     private lateinit var progressDialog: ProgressDialog
     var count = 0
-    var packageId=""
-    var insuranceFees=""
-    var processingFees=""
-    var packagename=""
+    var packageId = ""
+    var insuranceFees = ""
+    var processingFees = ""
+    var packagename = ""
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -63,17 +67,19 @@ class DocumenFragment : Fragment() {
     ): View? {
         uploadedFilename.clear()
         listFileUris.clear()
-        listFileUris.add("")
-        listFileUris.add("")
-        listFileUris.add("")
-        listFileUris.add("")
+        listFileUris.add("DWQDQ")
+        listFileUris.add("QWDQD")
+        listFileUris.add("QWDQD")
+        listFileUris.add("DQDQDQ")
 
         progressDialog = ProgressDialog(requireContext())
         progressDialog.setTitle("Uploading")
         progressDialog.setMessage("In-Progress.Please Wait")
 
+
         customImagePicker = CustomImagePicker(this)
         var random = kotlin.math.abs((0..999999999999).random())
+
         var fileName = "$random.jpg"
 
         customImagePicker.registerListener(
@@ -107,7 +113,7 @@ class DocumenFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this)[DocumenViewModel::class.java]
-        count= 0
+        count = 0
 
         packageId = DocumenFragmentArgs.fromBundle(requireArguments()).packageId
         insuranceFees = DocumenFragmentArgs.fromBundle(requireArguments()).insuranceFees
@@ -142,6 +148,14 @@ class DocumenFragment : Fragment() {
                 }
                 fetchData()
             }
+           /* val action = DocumenFragmentDirections.actionDocumenFragmentToPersonalFragment(
+                "1",
+                "1",
+                "insuranceFees",
+                "processingFees",
+                uploadedFilename.toString()
+            )
+            findNavController().navigate(action)*/
         }
     }
 
@@ -152,12 +166,16 @@ class DocumenFragment : Fragment() {
                     response.data?.let {
                         if (response.data.status == 1) {
                             count++
-                            /*Log.e(
-                                "responsekkkkk",
-                                count.toString()+"----"+ response.data.data.UploadedFileName[0].toString())*/
                             uploadedFilename.add(response.data.data.UploadedFileName[0].AttachemnetFile)
-                            if(count==4) {
-                                val action= DocumenFragmentDirections.actionDocumenFragmentToPersonalFragment(packagename,packageId,insuranceFees,processingFees,uploadedFilename.toString())
+                            if (count == 4) {
+                                val action =
+                                    DocumenFragmentDirections.actionDocumenFragmentToPersonalFragment(
+                                        packagename,
+                                        packageId,
+                                        insuranceFees,
+                                        processingFees,
+                                        uploadedFilename.toString()
+                                    )
                                 findNavController().navigate(action)
                             }
                         } else {

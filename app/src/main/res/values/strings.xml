@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Loan Services</string>
+    <string name="app_name">Indian Loan Service</string>
     <string name="title_activity_main">MainActivity</string>
     <!-- Strings used for fragments for navigation -->
     <string name="login_fragment_label">Login</string>

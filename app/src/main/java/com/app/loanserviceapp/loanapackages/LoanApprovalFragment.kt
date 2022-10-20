@@ -1,16 +1,16 @@
 package com.app.loanserviceapp.loanapackages
 
 import android.app.ProgressDialog
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.app.loanserviceapp.databinding.LoanApprovalFragmentBinding
 import com.app.loanserviceapp.loanapackages.model.PackagesArr
@@ -34,6 +34,7 @@ class LoanApprovalFragment : Fragment() {
     var insuranceFees=""
     var processingFees=""
     var packagename=""
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -67,6 +68,7 @@ class LoanApprovalFragment : Fragment() {
         super.onResume()
         getValidated()
     }
+
 
     private fun getValidated() {
         progressDialog.show()
@@ -114,47 +116,56 @@ class LoanApprovalFragment : Fragment() {
     }
 
     private fun inflateSpinner(packagesArr: List<PackagesArr>) {
+        list.clear()
         list.add("Select Packages")
-        for (i in 0 until packagesArr.size) {
-            list.add(packagesArr[i].PackageName)
+        for (element in packagesArr) {
+            list.add(element.PackageName)
         }
         if (list.size > 0) {
-            val adapter = ArrayAdapter(
-                requireContext(),
-                android.R.layout.simple_spinner_item, list
-            )
-            _binding.spnPackages?.adapter = adapter
 
-            _binding.spnPackages?.onItemSelectedListener = object :
-                AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(
-                    parent: AdapterView<*>,
-                    view: View, position: Int, id: Long
-                ) {
+            try{
+                val adapter = ArrayAdapter(
+                    requireContext(),
+                    android.R.layout.simple_spinner_item, list
+                )
+                _binding.spnPackages.adapter = adapter
 
-                    if (position != 0) {
-                        packagename=packagesArr[position - 1].PackageName
-                        packageId=packagesArr[position - 1].PackageID
-                        insuranceFees=packagesArr[position - 1].InsuranceFee
-                        processingFees=packagesArr[position - 1].ProcessingFee
-                        _binding.etInsurance.setText(insuranceFees)
-                        _binding.etProcessingFees.setText(processingFees)
-                    }else{
-                        packagename=""
-                        packageId=""
-                        insuranceFees=""
-                        processingFees=""
-                        _binding.etInsurance.setText("")
-                        _binding.etProcessingFees.setText("")
+                _binding.spnPackages.onItemSelectedListener = object :
+                    AdapterView.OnItemSelectedListener {
+                    override fun onItemSelected(
+                        parent: AdapterView<*>,
+                        view: View?, position: Int, id: Long
+                    ) {
+
+                        if (position > 0) {
+                            packagename=packagesArr[position - 1].PackageName
+                            packageId=packagesArr[position - 1].PackageID
+                            insuranceFees=packagesArr[position - 1].InsuranceFee
+                            processingFees=packagesArr[position - 1].ProcessingFee
+                            _binding.etInsurance.setText(insuranceFees)
+                            _binding.etProcessingFees.setText(processingFees)
+                        }else{
+                            packagename=""
+                            packageId=""
+                            insuranceFees=""
+                            processingFees=""
+                            _binding.etInsurance.setText("")
+                            _binding.etProcessingFees.setText("")
+                        }
+                    }
+
+                    override fun onNothingSelected(parent: AdapterView<*>) {
+                        // write code to perform some action
                     }
                 }
+            }catch (e:Exception){
 
-                override fun onNothingSelected(parent: AdapterView<*>) {
-                    // write code to perform some action
-                }
             }
+
         }
     }
+
+
 
 
 

@@ -9,7 +9,7 @@ import android.os.Environment.*
 import android.os.StatFs
 import android.provider.MediaStore
 import androidx.core.content.FileProvider
-import com.diageo.edge.utils.LogUtil
+import com.app.loanserviceapp.utils.LogUtil
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

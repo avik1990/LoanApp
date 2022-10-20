@@ -68,10 +68,7 @@
 
                 </ImageView>
             </LinearLayout>
-
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
         <include
             layout="@layout/content_main"

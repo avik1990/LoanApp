@@ -10,6 +10,7 @@ import com.app.loanserviceapp.password.model.LoginResponse
 import com.app.loanserviceapp.register.model.RegisterResponse
 import com.app.loanserviceapp.utils.Constants.Companion.IS_LOGGED_IN
 import com.app.loanserviceapp.utils.Constants.Companion.USER_ID
+import com.app.loanserviceapp.utils.Constants.Companion.USER_NAME
 import com.app.loanserviceapp.utils.Datastore.writeBool
 import com.app.loanserviceapp.utils.Datastore.writeString
 import com.app.loanserviceapp.utils.NetworkResult
@@ -52,5 +53,12 @@ class PasswordPinViewModel @Inject constructor(
             context.writeString(USER_ID, userId)
         }
     }
+
+    fun saveUserName(userName: String){
+        viewModelScope.launch(Dispatchers.IO) {
+            context.writeString(USER_NAME, userName)
+        }
+    }
+
 
 }

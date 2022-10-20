@@ -16,12 +16,15 @@ class Constants {
         const val SUBMIT_APPLICATION = "submitApplication"
         const val CHECK_LOGIN = "checkLogin"
         const val LOAN_STATUS = "getMyDashboard"
+        const val PAGE_CONTENT = "getPage"
 
         //const val LOGIN_URL = ""
 
         const val PREFERENCE_NAME = "MyDataStore"
         const val IS_LOGGED_IN = "Loggedin"
         const val USER_ID = "USERID"
+        const val USER_NAME = "USERNAME"
+
     }
 
 
