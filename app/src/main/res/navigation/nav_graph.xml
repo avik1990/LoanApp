@@ -150,6 +150,10 @@
         <action
             android:id="@+id/action_DashboardFragment_to_LoanApprovalFragment"
             app:destination="@id/LoanApprovalFragment" />
+        <action
+            android:id="@+id/action_DashboardFragment_to_Payment"
+            app:destination="@id/Payment"
+            app:enterAnim="@anim/cb_fade_in" />
     </fragment>
 
     <fragment
@@ -194,6 +198,24 @@
             app:launchSingleTop="true"
             app:popUpTo="@id/DashboardFragment"
             app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/Payment"
+        android:name="com.app.loanserviceapp.payment.PaymentFragment"
+        android:label="@string/payment_fragment_label"
+        tools:layout="@layout/fragment_payment">
+
+
+        <argument
+            android:name="packageName"
+            app:argType="string" />
+        <argument
+            android:name="processingFees"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_Payment_to_DashboardFragment"
+            app:destination="@id/DashboardFragment" />
     </fragment>
 
 

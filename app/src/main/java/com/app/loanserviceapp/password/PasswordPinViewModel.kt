@@ -9,8 +9,10 @@ import androidx.lifecycle.viewModelScope
 import com.app.loanserviceapp.password.model.LoginResponse
 import com.app.loanserviceapp.register.model.RegisterResponse
 import com.app.loanserviceapp.utils.Constants.Companion.IS_LOGGED_IN
+import com.app.loanserviceapp.utils.Constants.Companion.USER_EMAIL
 import com.app.loanserviceapp.utils.Constants.Companion.USER_ID
 import com.app.loanserviceapp.utils.Constants.Companion.USER_NAME
+import com.app.loanserviceapp.utils.Constants.Companion.USER_PHONE
 import com.app.loanserviceapp.utils.Datastore.writeBool
 import com.app.loanserviceapp.utils.Datastore.writeString
 import com.app.loanserviceapp.utils.NetworkResult
@@ -51,6 +53,18 @@ class PasswordPinViewModel @Inject constructor(
     fun saveUserID(userId: String){
         viewModelScope.launch(Dispatchers.IO) {
             context.writeString(USER_ID, userId)
+        }
+    }
+
+    fun savePhone(phone: String){
+        viewModelScope.launch(Dispatchers.IO) {
+            context.writeString(USER_PHONE, phone)
+        }
+    }
+
+    fun saveEmail(email: String){
+        viewModelScope.launch(Dispatchers.IO) {
+            context.writeString(USER_EMAIL, email)
         }
     }
 

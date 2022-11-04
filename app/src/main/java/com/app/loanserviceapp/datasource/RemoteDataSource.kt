@@ -11,6 +11,9 @@ class RemoteDataSource @Inject constructor(private val dogService: LoanApiServic
     suspend fun sentOTP(userPhone:String) =
         dogService.getOTP(userPhone)
 
+    suspend fun checkloginValidation(userPhone:String) =
+        dogService.getloginValidation(userPhone)
+
     suspend fun sentValueForRegistration(userName:String,userPhone:String,userEmail:String,otp:String) =
         dogService.sentRegistration(userName,userPhone,userEmail,otp)
 
@@ -59,4 +62,7 @@ class RemoteDataSource @Inject constructor(private val dogService: LoanApiServic
 
     suspend fun getPageContent(pageName: String) =
         dogService.getPageContent(pageName)
+
+    suspend fun sentpaymentStatus(json:String) =
+        dogService.sentPaymentStatus(json)
 }

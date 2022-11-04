@@ -2,8 +2,10 @@ package com.app.loanserviceapp.datasource
 
 import com.app.loanserviceapp.dashboard.model.LoanApplicationSattus
 import com.app.loanserviceapp.loanapackages.model.LoanPckages
+import com.app.loanserviceapp.login.model.CheckLoginResponse
 import com.app.loanserviceapp.model.PageDetails
 import com.app.loanserviceapp.password.model.LoginResponse
+import com.app.loanserviceapp.payment.model.PaymentStatusResponse1
 import com.app.loanserviceapp.register.model.RegisterResponse
 import com.app.loanserviceapp.utils.Constants
 import com.app.loanserviceapp.verification.documentation.model.UploadFileResponse
@@ -24,6 +26,11 @@ interface LoanApiServices {
     @POST(Constants.OTP_URL)
     suspend fun getOTP(@Field("MobileNumber") MobileNumber: String,
     ): Response<RegisterResponse>
+
+    @FormUrlEncoded
+    @POST(Constants.loginValidation)
+    suspend fun getloginValidation(@Field("MobileNumber") MobileNumber: String,
+    ): Response<CheckLoginResponse>
 
     @FormUrlEncoded
     @POST(Constants.REGISTRATION_URL)
@@ -70,21 +77,9 @@ interface LoanApiServices {
                                   @Field("IncomeProofImage") IncomeProofImage: String,): Response<ApplicationResponse>
 
 
-    /*UsersID:1
-    PackageID:1
-    PackageName:Pack Name
-    InsuranceFee:10
-
-    ProcessingFee:20
-    FullName:Sanjoy
-    MobileNumber:1234567890
-    Age:81
-    CurrentAddress:Ad-1
-    PermanentAddress:Ad-2
-    EmailAddress:sanjoy@gmail.com
-    PassportImage:abcd.jpg
-    AadharImage:efgh.jpg
-    PancardImage:ijk.jpg
-    IncomeProofImage:mno.jpg*/
+    @FormUrlEncoded
+    @POST(Constants.PAYMENT_STATUS)
+    suspend fun sentPaymentStatus(@Field("PaymentStatus") paymentstatus: String,
+                                 ): Response<PaymentStatusResponse1>
 
 }

@@ -24,7 +24,7 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 
 @AndroidEntryPoint
-class Dashboard : Fragment() {
+class Dashboard : Fragment(), LoanStatusAdpater.onRowItemSelected {
 
     companion object {
         fun newInstance() = Dashboard()
@@ -48,16 +48,12 @@ class Dashboard : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this)[DashboardViewModel::class.java]
 
-        _binding.btnLoanApply.setOnClickListener {
-            findNavController().navigate(R.id.action_DashboardFragment_to_LoanApprovalFragment)
-        }
+
 
         runBlocking {
             val getUserName = context?.readString(Constants.USER_ID)
             userId = getUserName?.first().toString()
         }
-
-
     }
 
     override fun onResume() {
@@ -76,9 +72,17 @@ class Dashboard : Fragment() {
                 is NetworkResult.Success -> {
                     response.data?.let {
                         if(response.data.status==1) {
-                            val obj_adapter = LoanStatusAdpater(response.data.data.MyApplications)
+                            val obj_adapter = LoanStatusAdpater(this,response.data.data.MyApplications)
                             loanList.layoutManager = LinearLayoutManager(requireContext(), LinearLayout.VERTICAL, false)
                             loanList.adapter = obj_adapter
+
+                            _binding.btnLoanApply.setOnClickListener {
+                                if(response.data.data.hasPendingLoan.equals("Y")){
+                                    Toast.makeText(requireContext(),"You already have pending loan.You can not apply now",Toast.LENGTH_LONG).show()
+                                }else{
+                                    findNavController().navigate(R.id.action_DashboardFragment_to_LoanApprovalFragment)
+                                }
+                            }
                         } else{
                             Toast.makeText(
                                 requireContext(),
@@ -90,7 +94,6 @@ class Dashboard : Fragment() {
                     progressDialog.dismiss()
                 }
                 is NetworkResult.Error -> {
-                    Log.e("response", response.message.toString())
                     Toast.makeText(
                         requireContext(),
                         response.message,
@@ -107,5 +110,11 @@ class Dashboard : Fragment() {
         }
     }
 
-
+    override fun getSelectedItem(id: String, processingFees: String) {
+        try {
+            val action = DashboardDirections.actionDashboardFragmentToPayment(
+                id, processingFees)
+            findNavController().navigate(action)
+        }catch (e: Exception){}
+    }
 }

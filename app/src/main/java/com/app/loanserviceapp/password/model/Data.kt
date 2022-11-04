@@ -5,5 +5,6 @@ data class Data(
     val IsSuccess: String,
     val Message: String,
     val MobileNumber: String,
+    val EmailAddress: String,
     val UsersID: String
 )

@@ -44,7 +44,7 @@ class TermsFragment : Fragment() {
         progressDialog.setTitle("Downloading")
         progressDialog.setMessage("Please Wait...")
         progressDialog.show()
-        viewModel.getPageContent("CONTACT_US")
+        viewModel.getPageContent("TERMS_CONDITION")
 
         fetchData()
     }
