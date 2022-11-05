@@ -11,7 +11,7 @@
     <string name="contact_fragment_label">Contact</string>
     <string name="aboutus_fragment_label">Aboutus</string>
     <string name="confirmed_fragment_label">Confirmed</string>
-
+    <string name="payment_fragment_label">Payment</string>
 
     <string name="get_instant_loan_in_3_mins">Get Instant Loan in 3 Mins</string>
     <string name="login">Login</string>

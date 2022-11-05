@@ -58,13 +58,11 @@ class PasswordPin : Fragment() {
             email = PasswordPinArgs.fromBundle(requireArguments()).useremail.toString()
         }
 
-
         progressDialog = ProgressDialog(requireContext())
         progressDialog.setTitle("Validating")
         progressDialog.setMessage("In-Progress.Please Wait")
 
         getValidated()
-        Log.e("DATAFROM", "$phone")
     }
 
     private fun getValidated() {
@@ -88,10 +86,6 @@ class PasswordPin : Fragment() {
                 viewModel.checkLogin(
                     phone,
                     _binding.firstPinView.text.toString())
-
-                Log.e("DATAFROM", "$phone")
-                Log.e("DATAFROM12333", _binding.firstPinView.text.toString())
-
                 fetchLoginData()
             }
         }
@@ -106,6 +100,8 @@ class PasswordPin : Fragment() {
                         if(response.data.status==1) {
                             viewModel.saveLoginStatus(true)
                             viewModel.saveUserID(response.data.data.UsersID)
+                            viewModel.savePhone(response.data.data.MobileNumber)
+                            viewModel.saveEmail(response.data.data.EmailAddress)
                             viewModel.saveUserName(response.data.data.FullName)
                             findNavController().navigate(R.id.action_PasswordPinFragment_to_DashboardFragment)
                         } else{
@@ -127,13 +123,11 @@ class PasswordPin : Fragment() {
                         Toast.LENGTH_SHORT
                     ).show()
                     progressDialog.dismiss()
-
                 }
 
                 is NetworkResult.Loading -> {
-                    // _binding.pbDog.visibility = View.VISIBLE
-                    //  progressDialog.show()
-
+                // _binding.pbDog.visibility = View.VISIBLE
+                //  progressDialog.show()
                 }
             }
         }
@@ -144,10 +138,11 @@ class PasswordPin : Fragment() {
             when (response) {
                 is NetworkResult.Success -> {
                     response.data?.let {
-                       // Log.e("response", response.data.Message)
                         if(response.data.status==1) {
                             viewModel.saveLoginStatus(true)
                             viewModel.saveUserID(response.data.data.UsersID)
+                            viewModel.savePhone(response.data.data.MobileNumber)
+                            viewModel.saveEmail(response.data.data.EmailAddress)
                             viewModel.saveUserName(response.data.data.FullName)
                             findNavController().navigate(R.id.action_PasswordPinFragment_to_DashboardFragment)
                         } else{
@@ -175,7 +170,6 @@ class PasswordPin : Fragment() {
                 is NetworkResult.Loading -> {
                     // _binding.pbDog.visibility = View.VISIBLE
                     //  progressDialog.show()
-
                 }
             }
         }

@@ -170,7 +170,6 @@ class PersonalFragment : Fragment() {
                 is NetworkResult.Loading -> {
                     // _binding.pbDog.visibility = View.VISIBLE
                     //  progressDialog.show()
-
                 }
             }
         }

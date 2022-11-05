@@ -26,8 +26,8 @@ class Login : Fragment() {
     private lateinit var viewModel: LoginViewModel
     private lateinit var _binding: LoginFragmentBinding
     private val binding get() = _binding!!
-    var userNPhone:String=""
-    private lateinit var progressDialog:ProgressDialog
+    var userNPhone: String = ""
+    private lateinit var progressDialog: ProgressDialog
 
 
     override fun onCreateView(
@@ -54,9 +54,9 @@ class Login : Fragment() {
     }
 
     private fun getValidated() {
-        _binding.btnLogin.setOnClickListener{
-            userNPhone=_binding.editText.text.toString()
-            if(userNPhone.isEmpty()){
+        _binding.btnLogin.setOnClickListener {
+            userNPhone = _binding.editText.text.toString()
+            if (userNPhone.isEmpty()) {
                 Toast.makeText(
                     requireContext(),
                     "Please Enter Mobile",
@@ -65,7 +65,7 @@ class Login : Fragment() {
                 return@setOnClickListener
             }
             progressDialog.show()
-            viewModel.sendForOTP(userNPhone)
+            viewModel.checkLogin(userNPhone)
 
             fetchData()
         }
@@ -77,18 +77,15 @@ class Login : Fragment() {
                 is NetworkResult.Success -> {
                     response.data?.let {
                         Log.e("response", response.data.Message)
-                        if(response.data.status==1) {
-                            val action= LoginDirections.actionLoginToPasswordPinFragment("",userNPhone,"",
-                                "Login")
+                        if (response.data.status == 1) {
+                            val action = LoginDirections.actionLoginToPasswordPinFragment(
+                                "", userNPhone, "",
+                                "Login"
+                            )
                             findNavController().navigate(action)
-
-                          //  findNavController().navigate(R.id.action_Login_to_PasswordPinFragment)
-                        } else{
-                            Toast.makeText(
-                                requireContext(),
-                                response.message,
-                                Toast.LENGTH_SHORT
-                            ).show()
+                            //findNavController().navigate(R.id.action_Login_to_PasswordPinFragment)
+                        } else {
+                            findNavController().navigate(R.id.action_Login_to_Register)
                         }
                     }
                     progressDialog.dismiss()

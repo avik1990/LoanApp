@@ -40,6 +40,8 @@ android {
 }
 
 dependencies {
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
     def daggerHiltVersion = '2.40.5'
     //def coilVersion = '1.2.2'
     def retrofitVersion = "2.9.0"
@@ -70,5 +72,8 @@ dependencies {
     kapt "com.google.dagger:hilt-android-compiler:$daggerHiltVersion"
     //for image rendering
     //implementation "io.coil-kt:coil:$coilVersion"
+   // implementation 'com.payumoney.core:payumoney-sdk:7.4.4'
+  //  implementation  'com.payumoney.sdkui:plug-n-play:1.4.4'
+    implementation 'in.payu:payu-checkout-pro:1.8.2'
 
 }

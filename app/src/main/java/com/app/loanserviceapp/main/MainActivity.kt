@@ -21,6 +21,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.app.loanserviceapp.R
 import com.app.loanserviceapp.aboutus.AboutusFragment
 import com.app.loanserviceapp.contact.ContactFragment
+import com.app.loanserviceapp.dashboard.Dashboard
 import com.app.loanserviceapp.databinding.ActivityMain2Binding
 import com.app.loanserviceapp.databinding.NavHeaderMainBinding
 import com.app.loanserviceapp.login.Login
@@ -34,6 +35,8 @@ import com.app.loanserviceapp.utils.Datastore.readString
 import com.app.loanserviceapp.utils.permissions.PermissionManager
 import com.google.android.material.navigation.NavigationView
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -49,7 +52,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navHostFragment: NavHostFragment
     private lateinit var navGraph: NavGraph
     var pageName = ""
-    var userName=""
+    var userName = ""
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -71,11 +76,11 @@ class MainActivity : AppCompatActivity() {
 
             val getLoggedinStatus = applicationContext.readBool(IS_LOGGED_IN)
             getUserStatus = getLoggedinStatus.first()
+
+            val headerview = binding.navView.getHeaderView(0)
+            val NavDrawheaderviewRef = NavHeaderMainBinding.bind(headerview)
+            NavDrawheaderviewRef.tvUserName.text = "Hello $userName"
         }
-        val headerview = binding.navView.getHeaderView(0)
-        val NavDrawheaderviewRef = NavHeaderMainBinding.bind(headerview)
-        NavDrawheaderviewRef.tvUserName.text=userName
-        //Toast.makeText(applicationContext,userName,Toast.LENGTH_SHORT).show()
 
 
         appBarConfiguration = AppBarConfiguration(
@@ -170,6 +175,15 @@ class MainActivity : AppCompatActivity() {
                         .commit()
                     true
                 }
+                R.id.nav_home -> {
+                    binding.drawerLayout.closeDrawer(Gravity.LEFT)
+                    var termsFragment = Dashboard()
+                    supportFragmentManager.beginTransaction()
+                        .addToBackStack(termsFragment.javaClass.name)
+                        .add(R.id.nav_host_fragment_content_main, termsFragment)
+                        .commit()
+                    true
+                }
                 R.id.nav_contact -> {
                     binding.drawerLayout.closeDrawer(Gravity.LEFT)
                     var termsFragment = ContactFragment()
@@ -191,7 +205,6 @@ class MainActivity : AppCompatActivity() {
         } else {
             navGraph.setStartDestination(R.id.Login)
         }
-
         navController.graph = navGraph
     }
 

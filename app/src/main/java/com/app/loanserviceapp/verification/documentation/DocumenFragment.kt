@@ -67,10 +67,10 @@ class DocumenFragment : Fragment() {
     ): View? {
         uploadedFilename.clear()
         listFileUris.clear()
-        listFileUris.add("DWQDQ")
-        listFileUris.add("QWDQD")
-        listFileUris.add("QWDQD")
-        listFileUris.add("DQDQDQ")
+        listFileUris.add("")
+        listFileUris.add("")
+        listFileUris.add("")
+        listFileUris.add("")
 
         progressDialog = ProgressDialog(requireContext())
         progressDialog.setTitle("Uploading")

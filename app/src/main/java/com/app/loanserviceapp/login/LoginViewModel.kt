@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.app.loanserviceapp.register.model.RegisterResponse
+import com.app.loanserviceapp.login.model.CheckLoginResponse
 import com.app.loanserviceapp.utils.Constants
 import com.app.loanserviceapp.utils.Datastore.writeBool
 import com.app.loanserviceapp.utils.NetworkResult
@@ -18,10 +18,10 @@ import javax.inject.Inject
 class LoginViewModel
 @Inject constructor(private val repository: LoginRepository,private val context : Context) : ViewModel() {
 
-    private val _responseOTP: MutableLiveData<NetworkResult<RegisterResponse>> = MutableLiveData()
-    val responseOTP: LiveData<NetworkResult<RegisterResponse>> = _responseOTP
+    private val _responseOTP: MutableLiveData<NetworkResult<CheckLoginResponse>> = MutableLiveData()
+    val responseOTP: LiveData<NetworkResult<CheckLoginResponse>> = _responseOTP
 
-    fun sendForOTP(userPhone:String) = viewModelScope.launch {
+    fun checkLogin(userPhone:String) = viewModelScope.launch {
         repository.getLoggedin(userPhone).collect { values ->
             _responseOTP.value = values
         }

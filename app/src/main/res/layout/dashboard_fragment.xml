@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".verification.personal.PersonalFragment">
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -35,7 +34,6 @@
         <ImageView
             android:layout_width="@dimen/_230sdp"
             android:layout_height="0dp"
-            android:layout_margin="@dimen/_20sdp"
             android:src="@drawable/dashboard_pic"
             app:layout_constraintBottom_toTopOf="@+id/btnLoanApply"
             app:layout_constraintEnd_toEndOf="parent"
@@ -48,14 +46,12 @@
             android:id="@+id/btnLoanApply"
             android:layout_width="@dimen/_230sdp"
             android:layout_height="@dimen/_40sdp"
-            android:layout_marginTop="5dp"
             android:src="@drawable/apply_for_loan_btn"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="TODO" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/loanList"
@@ -63,11 +59,9 @@
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnLoanApply" />
-
-
+            app:layout_constraintTop_toBottomOf="@+id/btnLoanApply"
+            app:layout_constraintVertical_bias="0.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

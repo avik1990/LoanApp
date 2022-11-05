@@ -8,16 +8,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.Toast
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.app.loanserviceapp.R
-import com.app.loanserviceapp.dashboard.adapter.LoanStatusAdpater
 import com.app.loanserviceapp.databinding.AboutusFragmentBinding
-import com.app.loanserviceapp.databinding.DashboardFragmentBinding
 import com.app.loanserviceapp.utils.NetworkResult
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.dashboard_fragment.*
 
 @AndroidEntryPoint
 class AboutusFragment : Fragment() {

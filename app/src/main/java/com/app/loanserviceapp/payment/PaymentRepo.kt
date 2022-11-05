@@ -1,7 +1,7 @@
-package com.app.loanserviceapp.login
+package com.app.loanserviceapp.payment
 
 import com.app.loanserviceapp.datasource.RemoteDataSource
-import com.app.loanserviceapp.login.model.CheckLoginResponse
+import com.app.loanserviceapp.payment.model.PaymentStatusResponse1
 import com.app.loanserviceapp.utils.BaseApiResponse
 import com.app.loanserviceapp.utils.NetworkResult
 import kotlinx.coroutines.Dispatchers
@@ -10,14 +10,13 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
-
-class LoginRepository @Inject constructor(
+class PaymentRepo @Inject constructor(
     private val remoteDataSource: RemoteDataSource
 ) : BaseApiResponse() {
 
-    suspend fun getLoggedin(userPhone:String): Flow<NetworkResult<CheckLoginResponse>> {
+    suspend fun sendPaymentStatusToServer(json:String): Flow<NetworkResult<PaymentStatusResponse1>> {
         return flow {
-            emit(safeApiCall { remoteDataSource.checkloginValidation(userPhone) })
+            emit(safeApiCall { remoteDataSource.sentpaymentStatus(json) })
         }.flowOn(Dispatchers.IO)
     }
 }
