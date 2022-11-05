@@ -11,6 +11,7 @@ class Constants {
         const val SUBMIT_APPLICATION = "Jsondata/submitApplication"
         const val CHECK_LOGIN = "Jsondata/checkLogin"
         const val LOAN_STATUS = "Jsondata/getMyDashboard"
+        const val UPLOAD_FILE = "Jsondata/uploadFileInServer"
         const val PAGE_CONTENT = "Jsondata/getPage"
         const val PAYMENT_STATUS = "payumoney/order_success"
         const val loginValidation = "Jsondata/loginValidation"

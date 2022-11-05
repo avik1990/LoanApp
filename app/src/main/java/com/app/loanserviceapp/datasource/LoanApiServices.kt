@@ -52,7 +52,7 @@ interface LoanApiServices {
     suspend fun getLoanStatus(@Query("UsersID") usersID: String): Response<LoanApplicationSattus>
 
     @Multipart
-    @POST("uploadFileInServer")
+    @POST(Constants.UPLOAD_FILE)
     suspend fun uploadImage(@Part filePart: MultipartBody.Part): Response<UploadFileResponse>
 
     @GET(Constants.PAGE_CONTENT)
