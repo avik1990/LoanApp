@@ -49,6 +49,10 @@ class PaymentFragment : Fragment() {
     var processingFees: String = ""
     private var userId: String = ""
 
+    private var MerchantKey: String = ""
+    private var MerchantSalt: String = ""
+
+
     var userphone: String = ""
     var userName: String = ""
     var userEmail: String = ""
@@ -85,6 +89,12 @@ class PaymentFragment : Fragment() {
 
             val getUserEmail = context?.readString(Constants.USER_EMAIL)
             userEmail = getUserEmail?.first().toString()
+
+            val getMerchantKey = context?.readString(Constants.MerchantKey)
+            MerchantKey = getMerchantKey?.first().toString()
+
+            val getMerchantSalt = context?.readString(Constants.MerchantSalt)
+            MerchantSalt = getMerchantSalt?.first().toString()
         }
 
         etProcessingFees.text = "\u20B9 " + processingFees
@@ -98,7 +108,7 @@ class PaymentFragment : Fragment() {
         var transactionId = System.currentTimeMillis().toString() + "##" + userId
         val payUPaymentParams =
             PayUPaymentParams.Builder().setAmount(processingFees).setIsProduction(true)
-                .setKey(Constants.testKey).setProductInfo(packageName).setPhone(userphone)
+                .setKey(MerchantKey).setProductInfo(packageName).setPhone(userphone)
                 .setTransactionId(transactionId).setFirstName(userName).setEmail(userEmail)
                 .setSurl(Constants.surl).setFurl(Constants.furl).setUserCredential(userId).build()
 
@@ -119,14 +129,12 @@ class PaymentFragment : Fragment() {
                     val payUResponse = response[PayUCheckoutProConstants.CP_PAYU_RESPONSE]
                     val merchantResponse = response[PayUCheckoutProConstants.CP_MERCHANT_RESPONSE]
                     Log.e("onPaymentFailure", payUResponse.toString() + "----" + merchantResponse)
-
                     sentStatusT0server(payUResponse)
                 }
 
                 override fun onPaymentCancel(isTxnInitiated: Boolean) {
                     //sentStatusT0server("")
                 }
-
 
                 override fun onError(errorResponse: ErrorResponse) {
                     Log.e("pAYMENTeRROR", errorResponse.toString())
@@ -158,7 +166,7 @@ class PaymentFragment : Fragment() {
 
                         //Do not generate hash from local, it needs to be calculated from server side only. Here, hashString contains hash created from your server side.
                         val hash: String? =
-                            HashGenerationUtils.generateHashFromSDK(hashData!!, Constants.testSalt)
+                            HashGenerationUtils.generateHashFromSDK(hashData!!, MerchantSalt)
                         if (!TextUtils.isEmpty(hash)) {
                             val dataMap: HashMap<String, String?> = HashMap()
                             dataMap[hashName!!] = hash!!

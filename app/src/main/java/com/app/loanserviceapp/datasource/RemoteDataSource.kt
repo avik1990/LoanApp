@@ -26,6 +26,9 @@ class RemoteDataSource @Inject constructor(private val dogService: LoanApiServic
     suspend fun getLoanstatus(usersID: String) =
         dogService.getLoanStatus(usersID)
 
+    suspend fun getPaymentKeys() =
+        dogService.getPaymentKeys()
+
     suspend fun uploadFile(file : MultipartBody.Part) =
         dogService.uploadImage(file)
 

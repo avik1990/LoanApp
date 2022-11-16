@@ -15,6 +15,8 @@ class Constants {
         const val PAGE_CONTENT = "Jsondata/getPage"
         const val PAYMENT_STATUS = "payumoney/order_success"
         const val loginValidation = "Jsondata/loginValidation"
+        const val PAYMENT_KEYS = "Jsondata/getPaymentAPIData"
+
         //const val LOGIN_URL = ""
         const val PREFERENCE_NAME = "MyDataStore"
         const val IS_LOGGED_IN = "Loggedin"
@@ -22,6 +24,10 @@ class Constants {
         const val USER_PHONE = "PHONE"
         const val USER_EMAIL = "EMAIL"
         const val USER_NAME = "USERNAME"
+
+        //// save payment-keys
+        const val MerchantKey = "MerchantKey"
+        const val MerchantSalt = "MerchantSalt"
 
         const val surl = "https://www.payumoney.com/mobileapp/payumoney/success.php"
         const val furl = "https://www.payumoney.com/mobileapp/payumoney/failure.php"
@@ -36,15 +42,12 @@ class Constants {
         const val merchantAccessKey = "<Please_add_your_merchant_access_key>"
         const val merchantSecretKey = "<Please_add_your_merchant_secret_key>"
 
-
         //Prod Key and Salt
         const val prodKey = "0MQaQP"
         const val prodSalt = "<Please_add_salt_here>"
-
     }
+
     enum class PAYMENTSTUATS {
         PEND, APPROVED, FAILED, CANCELED
     }
-
-
 }

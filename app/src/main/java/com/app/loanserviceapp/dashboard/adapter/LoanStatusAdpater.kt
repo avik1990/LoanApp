@@ -47,11 +47,7 @@ class LoanStatusAdpater(private val onNewsSelected: onRowItemSelected,val userLi
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bindItems(user: MyApplication) {
-            //itemView.appId.text="ID: #00000"+user.ApplicationID
             itemView.packageName.text=user.PackageName
-            //itemView.insuranceFee.text="Ins Fees "+user.InsuranceFee
-            //itemView.processingFee.text="Process. Fees: "+user.ProcessingFee
-            //itemView.completionStatus.text="Comp. Status: "+user.IsCompleteApplication
             itemView.applicationDate.text=user.ApplicationDate
             itemView.applicationStatus.text=user.ApplicationStatus
             Log.e("StatusValue",user.ApplicationStatus+"::"+Constants.PAYMENTSTUATS.PEND)

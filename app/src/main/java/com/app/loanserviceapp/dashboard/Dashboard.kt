@@ -63,7 +63,9 @@ class Dashboard : Fragment(), LoanStatusAdpater.onRowItemSelected {
         progressDialog.setMessage("Please Wait...")
         progressDialog.show()
         viewModel.getLoanStatusList(userId)
+        viewModel.getPaymentKeys()
         fetchData()
+        fetchPaymentData()
     }
 
     private fun fetchData() {
@@ -91,6 +93,40 @@ class Dashboard : Fragment(), LoanStatusAdpater.onRowItemSelected {
                             ).show()
                         }
                     }
+                    //progressDialog.dismiss()
+                }
+                is NetworkResult.Error -> {
+                    Toast.makeText(
+                        requireContext(),
+                        response.message,
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    progressDialog.dismiss()
+                }
+
+                is NetworkResult.Loading -> {
+                    // _binding.pbDog.visibility = View.VISIBLE
+                    //  progressDialog.show()
+                }
+            }
+        }
+    }
+    private fun fetchPaymentData() {
+        viewModel.responsePayment.observe(requireActivity()) { response ->
+            when (response) {
+                is NetworkResult.Success -> {
+                    response.data?.let {
+                        if(response.data.status==1) {
+                            viewModel.saveMerchnatKey(response.data.data.ApiData.MerchantKey)
+                            viewModel.saveMerchantSalt(response.data.data.ApiData.MerchantSalt)
+                        } else{
+                            Toast.makeText(
+                                requireContext(),
+                                response.message,
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
                     progressDialog.dismiss()
                 }
                 is NetworkResult.Error -> {
@@ -109,7 +145,6 @@ class Dashboard : Fragment(), LoanStatusAdpater.onRowItemSelected {
             }
         }
     }
-
     override fun getSelectedItem(id: String, processingFees: String) {
         try {
             val action = DashboardDirections.actionDashboardFragmentToPayment(

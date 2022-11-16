@@ -1,6 +1,7 @@
 package com.app.loanserviceapp.dashboard
 
 import com.app.loanserviceapp.dashboard.model.LoanApplicationSattus
+import com.app.loanserviceapp.dashboard.model.payment.PaymentResponse
 import com.app.loanserviceapp.datasource.RemoteDataSource
 import com.app.loanserviceapp.utils.BaseApiResponse
 import com.app.loanserviceapp.utils.NetworkResult
@@ -17,6 +18,12 @@ class HomeRepo @Inject constructor(
     suspend fun getLoanStatusList(userId: String): Flow<NetworkResult<LoanApplicationSattus>> {
         return flow {
             emit(safeApiCall { remoteDataSource.getLoanstatus(userId) })
+        }.flowOn(Dispatchers.IO)
+    }
+
+    suspend fun getPaymentKeys(): Flow<NetworkResult<PaymentResponse>> {
+        return flow {
+            emit(safeApiCall { remoteDataSource.getPaymentKeys() })
         }.flowOn(Dispatchers.IO)
     }
 }
